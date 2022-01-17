@@ -16,9 +16,9 @@ RUN apt-get update && apt-get install -y apache2 \
     python-dev\
     python-pip \
     vim \
- && apt-get clean \
- && apt-get autoremove \
- && rm -rf /var/lib/apt/lists/*
+    && apt-get clean \
+    && apt-get autoremove \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy over and install the requirements
 COPY ./app/requirements.txt /var/www/apache-flask/app/requirements.txt
@@ -43,7 +43,7 @@ RUN ln -sf /proc/self/fd/1 /var/log/apache2/access.log && \
     ln -sf /proc/self/fd/1 /var/log/apache2/error.log
 
 
-EXPOSE 80
+EXPOSE 8080
 
 WORKDIR /var/www/apache-flask
 
