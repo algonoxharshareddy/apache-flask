@@ -8,6 +8,11 @@ FROM ubuntu:bionic
 
 # File Author / Maintainer
 MAINTAINER Algonox
+USER root
+RUN chmod 777 /usr/sbin/apache2ctl
+
+RUN chmod -R 777 /var/log/apache2
+RUN chmod -R 777 /var/run/apache2
 
 RUN apt-get update 
 RUN apt-get install -y apt-utils vim curl apache2 apache2-utils
