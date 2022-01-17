@@ -20,7 +20,7 @@ RUN ln /usr/bin/pip3 /usr/bin/pip
 RUN apt-get clean 
 RUN apt-get autoremove
 RUN rm -rf /var/lib/apt/lists/*
-
+COPY ./ports.conf /etc/apache2/ports.conf
 # Copy over and install the requirements
 COPY ./app/requirements.txt /var/www/apache-flask/app/requirements.txt
 RUN pip install -r /var/www/apache-flask/app/requirements.txt
