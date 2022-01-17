@@ -10,9 +10,6 @@ FROM ubuntu:bionic
 MAINTAINER Algonox
 USER root
 
-RUN chmod -R 777 /var/log/apache2
-RUN chmod -R 777 /var/run/apache2
-
 RUN apt-get update 
 RUN apt-get install -y apt-utils vim curl apache2 apache2-utils
 RUN apt-get update && apt-get -y install python3 libapache2-mod-wsgi-py3
@@ -43,6 +40,8 @@ COPY ./app /var/www/apache-flask/app/
 RUN a2dissite 000-default.conf
 RUN a2ensite apache-flask.conf
 
+RUN chmod -R 777 /var/log/apache2
+RUN chmod -R 777 /var/run/apache2
 # LINK apache config to docker logs.
 RUN ln -sf /proc/self/fd/1 /var/log/apache2/access.log && \
     ln -sf /proc/self/fd/1 /var/log/apache2/error.log
