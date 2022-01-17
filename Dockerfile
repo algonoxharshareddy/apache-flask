@@ -9,6 +9,7 @@ FROM ubuntu:bionic
 # File Author / Maintainer
 MAINTAINER Algonox
 USER root
+RUN useradd flask_user && groupadd flask_group
 
 RUN apt-get update 
 RUN apt-get install -y apt-utils vim curl apache2 apache2-utils
